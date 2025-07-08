@@ -16,12 +16,6 @@ const Developer = ({ animationName = 'idle', ...props }) => {
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes, materials } = useGraph(clone);
 
-  // Debug: Log available nodes
-  React.useEffect(() => {
-    console.log('Available nodes in jan.glb:', Object.keys(nodes));
-    console.log('Available materials in jan.glb:', Object.keys(materials));
-  }, [nodes, materials]);
-
   const { animations: idleAnimation } = useFBX('/models/animations/idle.fbx');
   const { animations: saluteAnimation } = useFBX('/models/animations/salute.fbx');
   const { animations: clappingAnimation } = useFBX('/models/animations/clapping.fbx');
@@ -66,7 +60,6 @@ const Developer = ({ animationName = 'idle', ...props }) => {
     const material = materials[materialName];
     
     if (!node || !material) {
-      console.warn(`Missing node "${nodeName}" or material "${materialName}"`);
       return null;
     }
 
@@ -85,14 +78,11 @@ const Developer = ({ animationName = 'idle', ...props }) => {
 
   return (
     <group ref={group} {...props} dispose={null}>
-      {/* Try to find the root bone - common names are Hips, Root, Armature */}
-      {nodes.Hips && <primitive object={nodes.Hips} />}
-      {!nodes.Hips && nodes.Root && <primitive object={nodes.Root} />}
-      {!nodes.Hips && !nodes.Root && nodes.Armature && <primitive object={nodes.Armature} />}
+      {/* Use the Hips bone as root (confirmed to exist in jan.glb) */}
+      <primitive object={nodes.Hips} />
       
-      {/* Render available meshes with null safety */}
+      {/* Render available meshes - only the ones that exist in jan.glb */}
       {renderMesh('Wolf3D_Hair', 'Wolf3D_Hair', 'Hair')}
-      {renderMesh('Wolf3D_Glasses', 'Wolf3D_Glasses', 'Glasses')}
       {renderMesh('Wolf3D_Body', 'Wolf3D_Body', 'Body')}
       {renderMesh('Wolf3D_Outfit_Bottom', 'Wolf3D_Outfit_Bottom', 'OutfitBottom')}
       {renderMesh('Wolf3D_Outfit_Footwear', 'Wolf3D_Outfit_Footwear', 'Footwear')}
@@ -101,23 +91,16 @@ const Developer = ({ animationName = 'idle', ...props }) => {
       {renderMesh('EyeRight', 'Wolf3D_Eye', 'EyeRight')}
       {renderMesh('Wolf3D_Head', 'Wolf3D_Skin', 'Head')}
       {renderMesh('Wolf3D_Teeth', 'Wolf3D_Teeth', 'Teeth')}
-      
-      {/* If no known meshes exist, try to render all available meshes */}
-      {Object.keys(nodes).length > 0 && !nodes.Wolf3D_Hair && !nodes.Wolf3D_Body && 
-        Object.keys(nodes).map(nodeName => {
-          const node = nodes[nodeName];
-          if (node && node.geometry && node.material) {
-            return (
-              <mesh key={nodeName} geometry={node.geometry} material={node.material} />
-            );
-          }
-          return null;
-        })
-      }
     </group>
   );
 };
 
 useGLTF.preload('/models/animations/jan.glb');
+
+// Preload animations to reduce loading warnings
+useFBX.preload('/models/animations/idle.fbx');
+useFBX.preload('/models/animations/salute.fbx');
+useFBX.preload('/models/animations/clapping.fbx');
+useFBX.preload('/models/animations/victory.fbx');
 
 export default Developer;

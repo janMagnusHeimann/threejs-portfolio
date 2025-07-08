@@ -4,10 +4,6 @@ import { Canvas } from '@react-three/fiber';
 import { useMediaQuery } from 'react-responsive';
 import { PerspectiveCamera } from '@react-three/drei';
 
-import Rings from '../components/Rings.jsx';
-import PythonLogo from '../components/PythonLogo.jsx';
-import HuggingFaceLogo from '../components/HuggingFaceLogo.jsx';
-import MongoDBLogo from '../components/MongoDBLogo.jsx';
 import Button from '../components/Button.jsx';
 import CanvasLoader from '../components/Loading.jsx';
 import HeroCamera from '../components/HeroCamera.jsx';
@@ -42,12 +38,6 @@ const Hero = () => {
               <HackerRoom scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
             </HeroCamera>
 
-            <group>
-              <PythonLogo position={sizes.pythonPosition} />
-              <HuggingFaceLogo position={sizes.huggingfacePosition} />
-              <MongoDBLogo position={sizes.mongodbPosition} />
-              <Rings position={sizes.ringPosition} />
-            </group>
 
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />

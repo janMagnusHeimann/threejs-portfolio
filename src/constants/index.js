@@ -28,9 +28,7 @@ export const publications = [{
         year: '2024',
         abstract: 'We present a novel approach using Graph Neural Networks with attention mechanisms to predict inorganic material synthesis conditions. Our method achieves significant improvements in accuracy over baseline approaches by leveraging the structural relationships in reaction graphs and incorporating domain-specific material science knowledge.',
         image: '/assets/publication1.png', // You can add publication images here
-        pdf: '#', // Add PDF link when available
-        arxiv: '#', // Add arXiv link when available
-        code: '#', // Add code repository link when available
+        pdf: 'https://openreview.net/forum?id=VGsXQOTs1E',
         tags: ['Graph Neural Networks', 'Materials Science', 'Deep Learning', 'Synthesis Prediction', 'AI4Science']
     }
     // Add more publications as they become available
@@ -40,9 +38,9 @@ export const myProjects = [{
         title: 'AutoApply - AI Job Application SaaS',
         desc: 'A revolutionary multi-agent system that automates job applications using GPT-4 and Claude-3 APIs. AutoApply has generated $480K ARR with 10K+ monthly active users by intelligently applying to relevant positions.',
         subdesc: 'Built with fine-tuned YOLOv8 for form detection achieving 94.3% accuracy, processing 78K+ successful applications. Scaled infrastructure handles 2.8M+ monthly queries with 99.7% uptime using containerized microservices.',
-        href: 'https://github.com/jan-heimann/autoapply',
+        href: 'https://github.com/janMagnusHeimann/autoapply-turbo-charge-jobs',
         texture: '/textures/project/project1.mp4',
-        logo: '/assets/project-logo1.png',
+        logo: '/assets/autoapply.png',
         logoStyle: {
             backgroundColor: '#2A1816',
             border: '0.2px solid #36201D',
@@ -69,18 +67,13 @@ export const myProjects = [{
                 name: 'TypeScript',
                 path: '/assets/typescript.png',
             },
-            {
-                id: 5,
-                name: 'Microservices',
-                path: '/assets/terminal.png',
-            },
         ],
     },
     {
         title: 'OpenRLHF Fork - Scalable RLHF Framework',
         desc: 'Enhanced OpenRLHF framework implementing hybrid DPO/PPO training pipeline with significant performance improvements. Reduced GPU memory usage by 15% and achieved 23% faster convergence on reward model training.',
         subdesc: 'Contributed multi-node distributed training support using DeepSpeed ZeRO-3, enabling training of 13B parameter models on 8x A100 clusters. Implemented adaptive KL penalty scheduling and batch-wise advantage normalization.',
-        href: 'https://github.com/jan-heimann/OpenRLHF',
+        href: 'https://github.com/janMagnusHeimann/OpenRLHF',
         texture: '/textures/project/project2.mp4',
         logo: '/assets/project-logo2.png',
         logoStyle: {
@@ -115,7 +108,7 @@ export const myProjects = [{
         title: 'ArchUnit TypeScript - Architecture Testing',
         desc: 'Open source TypeScript architecture testing library with 400+ GitHub stars and widespread adoption in the JavaScript ecosystem. Enables developers to validate architectural rules and maintain code quality at scale.',
         subdesc: 'Implemented AST-based static analysis supporting circular dependency detection, layered architecture validation, and code metrics. Built pattern matching system with glob/regex support and universal testing framework integration.',
-        href: 'https://github.com/MaibornWolff/archunit-typescript',
+        href: 'https://github.com/LukasNiessen/ArchUnitTS',
         texture: '/textures/project/project3.mp4',
         logo: '/assets/typescript.png',
         logoStyle: {
@@ -212,7 +205,7 @@ export const workExperiences = [{
         pos: 'Machine Learning Engineer',
         duration: 'Mar 2024 - Mar 2025',
         title: "Designed RL pipeline using PPO to optimize rocket design parameters, achieving $1.5M projected cost reduction per launch. Implemented Graph Neural Networks to encode rocket component relationships and created custom OpenAI Gym environments.",
-        icon: '/assets/figma.svg',
+        icon: '/assets/rfa.png',
         animation: 'clapping',
     },
     {
@@ -221,7 +214,7 @@ export const workExperiences = [{
         pos: 'Assistant ML Researcher',
         duration: 'May 2024 - Dec 2024',
         title: "Developed Graph Neural Networks with attention mechanisms for material synthesis prediction, improving accuracy by 9.2% over baseline methods. Implemented multi-task transformer pretraining on 500K material descriptions.",
-        icon: '/assets/notion.svg',
+        icon: '/assets/mit.png',
         animation: 'salute',
     },
     {
@@ -230,7 +223,7 @@ export const workExperiences = [{
         pos: 'ML Engineer/Advisor',
         duration: 'Oct 2024 - Mar 2025',
         title: "Fine-tuned DeepSeek R1 (70B parameters) using LoRA with rank-16 adaptation, achieving +4% BLEU and +6% ROUGE-L on German benchmarks. Implemented production RAG system with 92% retrieval accuracy.",
-        icon: '/assets/notion.svg',
+        icon: '/assets/deepmask.png',
         animation: 'idle',
     },
     {
@@ -239,7 +232,7 @@ export const workExperiences = [{
         pos: 'Software Engineer',
         duration: 'Jan 2023 - Mar 2024',
         title: "Built ML pipeline automating FEM analysis using Gaussian Processes, reducing engineering cycle time by 25%. Developed LSTM-based anomaly detection for satellite telemetry data and deployed models using MLflow and Docker.",
-        icon: '/assets/notion.svg',
+        icon: '/assets/ohb.png',
         animation: 'salute',
     },
     {
@@ -248,7 +241,7 @@ export const workExperiences = [{
         pos: 'Co-Founder/Software Lead',
         duration: 'Jan 2021 - Dec 2022',
         title: "Led development of mobile banking application serving 20K+ users, presented at 'Die Höhle der Löwen' TV show. Implemented Random Forest models for transaction categorization and fraud detection on 1M+ records.",
-        icon: '/assets/notion.svg',
+        icon: '/assets/getmobie.png',
         animation: 'clapping',
     },
 ];

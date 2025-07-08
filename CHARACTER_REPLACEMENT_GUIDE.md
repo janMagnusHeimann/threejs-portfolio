@@ -1,4 +1,4 @@
-# 3D Character Replacement Guide
+can# 3D Character Replacement Guide
 
 This guide explains how to replace the default 3D character in the Work Experience section with your own avatar.
 
