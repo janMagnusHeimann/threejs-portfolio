@@ -26,8 +26,15 @@ const Publications = () => {
             <div className="publication-content">
               <div className="publication-header">
                 <h4 className="publication-title">{publication.title}</h4>
+                {publication.workshop && (
+                  <p className="publication-workshop-subtitle">
+                    NeurIPS: {publication.workshop} → {publication.workshopFull}
+                  </p>
+                )}
                 <div className="publication-meta">
-                  <span className="publication-venue">{publication.venue}</span>
+                  {publication.conference && (
+                    <span className="publication-conference">{publication.conference}</span>
+                  )}
                   <span className="publication-year">{publication.year}</span>
                 </div>
               </div>

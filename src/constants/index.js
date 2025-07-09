@@ -25,6 +25,9 @@ export const publications = [{
         title: 'Reaction Graph Networks for Inorganic Synthesis Condition Prediction of Solid State Materials',
         authors: 'Heimann, J., et al.',
         venue: 'AI4Mat-2024: NeurIPS 2024 Workshop on AI for Accelerated Materials Design',
+        conference: 'NeurIPS 2024',
+        workshop: 'AI4Mat-2024',
+        workshopFull: 'AI for Accelerated Materials Design',
         year: '2024',
         abstract: 'We present a novel approach using Graph Neural Networks with attention mechanisms to predict inorganic material synthesis conditions. Our method achieves significant improvements in accuracy over baseline approaches by leveraging the structural relationships in reaction graphs and incorporating domain-specific material science knowledge.',
         image: '/assets/publication1.png', // You can add publication images here

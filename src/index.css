@@ -92,6 +92,15 @@ body {
     .publication-venue {
         @apply text-white-600 font-medium text-sm;
     }
+    .publication-conference {
+        @apply text-white-800 font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-1;
+    }
+    .publication-workshop {
+        @apply text-white-700 font-medium text-sm;
+    }
+    .publication-workshop-subtitle {
+        @apply text-white-600 font-light text-sm mt-1 mb-3 italic;
+    }
     .publication-year {
         @apply text-white-500 text-sm;
     }
