@@ -15,6 +15,11 @@ export const navLinks = [{
     },
     {
         id: 4,
+        name: 'Blog',
+        href: '#blog',
+    },
+    {
+        id: 5,
         name: 'Contact',
         href: '#contact',
     },
@@ -178,6 +183,241 @@ export const myProjects = [{
             },
         ],
     },
+];
+
+export const blogPosts = [
+    {
+        id: 1,
+        title: "Building Scalable Machine Learning Pipelines with MLflow and Docker",
+        excerpt: "A deep dive into creating production-ready ML pipelines that scale efficiently across different environments.",
+        content: `# Building Scalable Machine Learning Pipelines with MLflow and Docker
+
+## Introduction
+
+In today's rapidly evolving AI landscape, deploying machine learning models to production requires more than just good algorithms. This article explores how to build robust, scalable ML pipelines using MLflow for experiment tracking and Docker for containerization.
+
+## Key Components
+
+### 1. MLflow for Experiment Management
+- **Model Registry**: Version control for ML models
+- **Experiment Tracking**: Monitor metrics, parameters, and artifacts
+- **Model Serving**: Deploy models as REST APIs
+
+### 2. Docker for Containerization
+- **Reproducible Environments**: Consistent deployment across platforms
+- **Scalability**: Easy horizontal scaling with orchestration tools
+- **Isolation**: Prevent dependency conflicts
+
+## Implementation Strategy
+
+\`\`\`python
+import mlflow
+import mlflow.sklearn
+from mlflow.models import infer_signature
+
+# Track experiment
+with mlflow.start_run():
+    model = train_model(X_train, y_train)
+    
+    # Log metrics
+    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("f1_score", f1)
+    
+    # Log model
+    signature = infer_signature(X_test, predictions)
+    mlflow.sklearn.log_model(model, "model", signature=signature)
+\`\`\`
+
+## Best Practices
+
+1. **Version Everything**: Code, data, and models
+2. **Automate Testing**: Unit tests and integration tests
+3. **Monitor Performance**: Real-time model performance tracking
+4. **Implement CI/CD**: Automated deployment pipelines
+
+## Conclusion
+
+Building scalable ML pipelines requires careful consideration of tooling, architecture, and operational practices. MLflow and Docker provide a solid foundation for production ML systems.`,
+        author: "Jan Heimann",
+        date: "2025-01-08",
+        readTime: "8 min read",
+        tags: ["MLflow", "Docker", "Machine Learning", "DevOps", "Production"],
+        category: "ML Engineering",
+        featured: true
+    },
+    {
+        id: 2,
+        title: "Graph Neural Networks for Materials Discovery",
+        excerpt: "Exploring how Graph Neural Networks can revolutionize materials science by predicting synthesis conditions and properties.",
+        content: `# Graph Neural Networks for Materials Discovery
+
+## The Challenge
+
+Materials discovery traditionally relies on expensive experiments and trial-and-error approaches. Graph Neural Networks (GNNs) offer a promising solution by modeling the structural relationships in materials.
+
+## Why GNNs for Materials?
+
+### Graph Representation
+- **Atoms as Nodes**: Each atom becomes a node with features
+- **Bonds as Edges**: Chemical bonds define the graph structure
+- **Structural Awareness**: Natural representation of molecular structure
+
+### Advantages over Traditional ML
+- **Permutation Invariance**: Order of atoms doesn't matter
+- **Size Flexibility**: Handle molecules of varying sizes
+- **Interpretability**: Attention mechanisms show important regions
+
+## Implementation with PyTorch Geometric
+
+\`\`\`python
+import torch
+import torch.nn.functional as F
+from torch_geometric.nn import GCNConv, global_mean_pool
+
+class MaterialGNN(torch.nn.Module):
+    def __init__(self, num_features, hidden_dim, num_classes):
+        super(MaterialGNN, self).__init__()
+        self.conv1 = GCNConv(num_features, hidden_dim)
+        self.conv2 = GCNConv(hidden_dim, hidden_dim)
+        self.conv3 = GCNConv(hidden_dim, hidden_dim)
+        self.classifier = torch.nn.Linear(hidden_dim, num_classes)
+        
+    def forward(self, x, edge_index, batch):
+        x = F.relu(self.conv1(x, edge_index))
+        x = F.relu(self.conv2(x, edge_index))
+        x = F.relu(self.conv3(x, edge_index))
+        x = global_mean_pool(x, batch)
+        return self.classifier(x)
+\`\`\`
+
+## Real-World Applications
+
+1. **Synthesis Prediction**: Predicting optimal conditions for material synthesis
+2. **Property Prediction**: Estimating material properties from structure
+3. **Drug Discovery**: Accelerating pharmaceutical research
+4. **Catalyst Design**: Optimizing catalytic materials
+
+## Results and Impact
+
+Our research shows significant improvements over traditional methods:
+- **9.2% accuracy improvement** in synthesis prediction
+- **Faster convergence** in training time
+- **Better generalization** to unseen materials
+
+## Future Directions
+
+- **Multi-modal Integration**: Combining structural and experimental data
+- **Uncertainty Quantification**: Providing confidence estimates
+- **Active Learning**: Iteratively improving models with new data
+
+The future of materials discovery lies in the intelligent combination of domain knowledge and advanced ML techniques.`,
+        author: "Jan Heimann",
+        date: "2025-01-05",
+        readTime: "12 min read",
+        tags: ["Graph Neural Networks", "Materials Science", "PyTorch", "AI4Science"],
+        category: "Research",
+        featured: true
+    },
+    {
+        id: 3,
+        title: "Optimizing React Three Fiber Performance",
+        excerpt: "Tips and tricks for building smooth 3D web experiences with React Three Fiber, focusing on performance optimization.",
+        content: `# Optimizing React Three Fiber Performance
+
+## Introduction
+
+React Three Fiber (R3F) brings the power of Three.js to React applications, but achieving smooth 60fps performance requires careful optimization. This guide covers essential techniques for building performant 3D web experiences.
+
+## Key Optimization Strategies
+
+### 1. Geometry and Material Optimization
+
+\`\`\`jsx
+import { useMemo } from 'react'
+import { useFrame } from '@react-three/fiber'
+
+function OptimizedMesh() {
+  // Memoize geometry to prevent recreation
+  const geometry = useMemo(() => new THREE.SphereGeometry(1, 32, 32), [])
+  
+  // Reuse materials across instances
+  const material = useMemo(() => new THREE.MeshStandardMaterial({ 
+    color: 'hotpink' 
+  }), [])
+  
+  return <mesh geometry={geometry} material={material} />
+}
+\`\`\`
+
+### 2. Instancing for Multiple Objects
+
+\`\`\`jsx
+import { useRef } from 'react'
+import { InstancedMesh } from 'three'
+
+function InstancedSpheres({ count = 1000 }) {
+  const meshRef = useRef()
+  
+  useFrame(() => {
+    // Animate instances efficiently
+    for (let i = 0; i < count; i++) {
+      // Update individual instance transforms
+    }
+  })
+  
+  return (
+    <instancedMesh ref={meshRef} args={[geometry, material, count]}>
+      {/* Individual instances */}
+    </instancedMesh>
+  )
+}
+\`\`\`
+
+### 3. Level of Detail (LOD)
+
+\`\`\`jsx
+import { Detailed } from '@react-three/drei'
+
+function LODModel() {
+  return (
+    <Detailed distances={[0, 10, 20]}>
+      <HighQualityModel />
+      <MediumQualityModel />
+      <LowQualityModel />
+    </Detailed>
+  )
+}
+\`\`\`
+
+## Performance Monitoring
+
+### Frame Rate Monitoring
+- Use \`useFrame\` callback timing
+- Implement performance budgets
+- Monitor GPU utilization
+
+### Memory Management
+- Dispose of unused geometries and materials
+- Use object pooling for frequently created objects
+- Monitor memory leaks with DevTools
+
+## Best Practices
+
+1. **Frustum Culling**: Don't render objects outside the camera view
+2. **Texture Optimization**: Use appropriate texture sizes and formats
+3. **Shader Optimization**: Minimize fragment shader complexity
+4. **Batch Operations**: Group similar rendering operations
+
+## Conclusion
+
+Building performant 3D web applications requires a deep understanding of both React and Three.js optimization techniques. By following these practices, you can create smooth, engaging 3D experiences that run well across devices.`,
+        author: "Jan Heimann",
+        date: "2025-01-02",
+        readTime: "10 min read",
+        tags: ["React Three Fiber", "Three.js", "Performance", "3D Web", "Optimization"],
+        category: "Frontend Development",
+        featured: false
+    }
 ];
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
