@@ -1,28 +1,21 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 
 import { myProjects } from '../constants/index.js';
 import CanvasLoader from '../components/Loading.jsx';
-import EnhancedCanvasLoader from '../components/EnhancedCanvasLoader.jsx';
 import DemoComputer from '../components/DemoComputer.jsx';
-import MobileOptimizedCanvas from '../components/MobileOptimizedCanvas.jsx';
-import CanvasErrorBoundary from '../components/CanvasErrorBoundary.jsx';
 import MobileProjectDisplay from '../components/MobileProjectDisplay.jsx';
 import { useMobileDetection } from '../hooks/useMobileDetection.js';
 
 const Projects = () => {
   const deviceInfo = useMobileDetection();
-  const [canvasTimeouts, setCanvasTimeouts] = useState({});
 
   useGSAP(() => {
     gsap.fromTo(`.project-card`, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
   }, []);
-
-  const handleCanvasTimeout = (projectIndex) => {
-    setCanvasTimeouts(prev => ({ ...prev, [projectIndex]: true }));
-  };
 
   return (
     <section className="c-space my-20" id="work">
@@ -72,23 +65,21 @@ const Projects = () => {
                 <MobileProjectDisplay texture={project.texture} project={project} />
               ) : (
                 /* Desktop: Show 3D Canvas */
-                <CanvasErrorBoundary>
-                  <MobileOptimizedCanvas
-                    camera={{ position: [0, 0, 5], fov: 75 }}
-                    style={{ width: '100%', height: '100%' }}
-                  >
-                    <ambientLight intensity={Math.PI} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />
-                    <Center>
-                      <Suspense fallback={<CanvasLoader />}>
-                        <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                          <DemoComputer texture={project.texture} />
-                        </group>
-                      </Suspense>
-                    </Center>
-                    <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
-                  </MobileOptimizedCanvas>
-                </CanvasErrorBoundary>
+                <Canvas
+                  camera={{ position: [0, 0, 5], fov: 75 }}
+                  style={{ width: '100%', height: '100%' }}
+                >
+                  <ambientLight intensity={Math.PI} />
+                  <directionalLight position={[10, 10, 5]} intensity={1} />
+                  <Center>
+                    <Suspense fallback={<CanvasLoader />}>
+                      <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+                        <DemoComputer texture={project.texture} />
+                      </group>
+                    </Suspense>
+                  </Center>
+                  <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
+                </Canvas>
               )}
             </div>
           </div>
