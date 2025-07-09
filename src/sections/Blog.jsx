@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { blogPosts } from '../constants/index.js';
+import { blogPosts, getBlogCategories } from '../content/blogPosts.js';
 import BlogCard from '../components/BlogCard.jsx';
 import BlogPost from '../components/BlogPost.jsx';
 
@@ -9,7 +9,7 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   // Get unique categories
-  const categories = ['All', ...new Set(blogPosts.map(post => post.category))];
+  const categories = getBlogCategories();
 
   // Filter posts based on search and category
   const filteredPosts = blogPosts.filter(post => {
@@ -22,8 +22,8 @@ const Blog = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Sort posts by date (newest first)
-  const sortedPosts = filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Posts are already sorted by date in contentLoader
+  const sortedPosts = filteredPosts;
 
   const handleReadMore = (post) => {
     setSelectedPost(post);
