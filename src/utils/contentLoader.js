@@ -54,7 +54,6 @@ const processMarkdownFiles = () => {
       readTime: frontmatter.readTime,
       tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [frontmatter.tags],
       category: frontmatter.category,
-      featured: frontmatter.featured || false,
       content: markdownContent,
       // Additional metadata
       lastModified: new Date().toISOString(),
@@ -95,11 +94,6 @@ export const getBlogPostsByCategory = (category) => {
   return posts.filter(post => post.category === category);
 };
 
-// Get featured blog posts
-export const getFeaturedBlogPosts = () => {
-  const posts = loadBlogPosts();
-  return posts.filter(post => post.featured);
-};
 
 // Get all unique categories
 export const getBlogCategories = () => {
@@ -134,7 +128,6 @@ export const getBlogStats = () => {
   
   return {
     totalPosts: posts.length,
-    featuredPosts: posts.filter(post => post.featured).length,
     categories: getBlogCategories().length - 1, // Exclude 'All'
     tags: getBlogTags().length,
     totalWords: posts.reduce((acc, post) => acc + post.wordCount, 0),

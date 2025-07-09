@@ -24,7 +24,6 @@ export const blogPosts = [
     readTime: "7 min read",
     tags: ["Tag1", "Tag2", "Tag3"],
     category: "Your Category",
-    featured: true, // or false
     content: `# Your Article Title
 
 ## Introduction
@@ -74,7 +73,6 @@ That's it! Your article will automatically appear on the website with:
 | `readTime` | Estimated reading time | ✅ Yes |
 | `tags` | Array of searchable tags | ✅ Yes |
 | `category` | Category for filtering | ✅ Yes |
-| `featured` | Show in featured section | ✅ Yes |
 | `content` | Full markdown content | ✅ Yes |
 
 ## Markdown Features
@@ -107,7 +105,6 @@ Or create your own! New categories automatically appear in the filter.
 2. **Keep excerpts under 150 characters** for best card display
 3. **Include code examples** - they get syntax highlighting
 4. **Use proper markdown headers** for good structure
-5. **Set `featured: true`** for your best articles
 
 ## Example Categories by Content Type
 

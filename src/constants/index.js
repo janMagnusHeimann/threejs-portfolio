@@ -243,7 +243,6 @@ Building scalable ML pipelines requires careful consideration of tooling, archit
         readTime: "8 min read",
         tags: ["MLflow", "Docker", "Machine Learning", "DevOps", "Production"],
         category: "ML Engineering",
-        featured: true
     },
     {
         id: 2,
@@ -316,7 +315,6 @@ The future of materials discovery lies in the intelligent combination of domain 
         readTime: "12 min read",
         tags: ["Graph Neural Networks", "Materials Science", "PyTorch", "AI4Science"],
         category: "Research",
-        featured: true
     },
     {
         id: 3,
@@ -416,7 +414,6 @@ Building performant 3D web applications requires a deep understanding of both Re
         readTime: "10 min read",
         tags: ["React Three Fiber", "Three.js", "Performance", "3D Web", "Optimization"],
         category: "Frontend Development",
-        featured: false
     }
 ];
 

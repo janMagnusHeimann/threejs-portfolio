@@ -96,27 +96,9 @@ const Blog = () => {
           </p>
         </div>
 
-        {/* Featured Posts */}
-        {searchTerm === '' && selectedCategory === 'All' && (
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6">Featured Articles</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {sortedPosts.filter(post => post.featured).map(post => (
-                <BlogCard 
-                  key={post.id} 
-                  post={post} 
-                  onReadMore={handleReadMore}
-                />
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* All Posts */}
         <div className="mb-12">
-          {searchTerm === '' && selectedCategory === 'All' && (
-            <h3 className="text-2xl font-bold text-white mb-6">All Articles</h3>
-          )}
           
           {filteredPosts.length === 0 ? (
             <div className="text-center py-12">

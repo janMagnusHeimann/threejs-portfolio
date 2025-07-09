@@ -20,14 +20,6 @@ const BlogCard = ({ post, onReadMore }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Featured badge */}
-      {post.featured && (
-        <div className="mb-4">
-          <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-            Featured
-          </span>
-        </div>
-      )}
 
       {/* Category and date */}
       <div className="flex justify-between items-center mb-3">

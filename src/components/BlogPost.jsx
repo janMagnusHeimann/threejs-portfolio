@@ -109,14 +109,6 @@ const BlogPost = ({ post, onBack }) => {
       {/* Article header */}
       <article className="prose prose-lg max-w-none">
         <div className="mb-8">
-          {/* Featured badge */}
-          {post.featured && (
-            <div className="mb-4">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                Featured
-              </span>
-            </div>
-          )}
 
           {/* Category and date */}
           <div className="flex justify-between items-center mb-4">

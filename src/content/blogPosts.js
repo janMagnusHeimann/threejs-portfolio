@@ -8,7 +8,6 @@ export const blogPosts = [
     readTime: "8 min read",
     tags: ["MLflow", "Docker", "Machine Learning", "DevOps", "Production"],
     category: "ML Engineering",
-    featured: true,
     content: `# Building Scalable Machine Learning Pipelines with MLflow and Docker
 
 ## Introduction
@@ -67,7 +66,6 @@ Building scalable ML pipelines requires careful consideration of tooling, archit
     readTime: "12 min read",
     tags: ["Graph Neural Networks", "Materials Science", "PyTorch", "AI4Science"],
     category: "Research",
-    featured: true,
     content: `# Graph Neural Networks for Materials Discovery
 
 ## The Challenge
@@ -140,7 +138,6 @@ The future of materials discovery lies in the intelligent combination of domain 
     readTime: "10 min read",
     tags: ["React Three Fiber", "Three.js", "Performance", "3D Web", "Optimization"],
     category: "ML Engineering",
-    featured: false,
     content: `# Optimizing React Three Fiber Performance
 
 ## Introduction
@@ -240,7 +237,6 @@ Building performant 3D web applications requires a deep understanding of both Re
     readTime: "15 min read",
     tags: ["SaaS", "AI", "GPT-4", "Claude-3", "Computer Vision", "YOLOv8", "Entrepreneurship"],
     category: "My Projects",
-    featured: true,
     content: `# Building AutoApply: Lessons from Creating an AI-Powered SaaS that Generated $480K ARR
 
 ## The Problem That Started It All
@@ -536,7 +532,6 @@ AutoApply continues to evolve, and I'm excited to see how AI will transform the 
     readTime: "12 min read",
     tags: ["AI", "AGI", "Future Tech", "GPT-4", "Machine Learning", "Society"],
     category: "Future of AI",
-    featured: true,
     content: `# The Future of AI: From GPT-4 to AGI and Beyond
 
 ## The Current AI Landscape
@@ -843,7 +838,6 @@ The next decade will be transformative. Those who understand and prepare for the
     readTime: "8 min read",
     tags: ["RLHF", "Ray", "vLLM", "ZeRO-3", "HuggingFace", "OpenSource"],
     category: "ML Engineering",
-    featured: false,
     content: `## Introduction
 
 In the rapidly evolving landscape of large language models (LLMs), Reinforcement Learning from Human Feedback (RLHF) has emerged as a crucial technique for aligning AI systems with human values and preferences. However, implementing RLHF efficiently at scale has remained a significant challenge—until now. Enter OpenRLHF, an open-source framework that's revolutionizing how researchers and developers approach RLHF training.
@@ -983,7 +977,6 @@ If you're interested in contributing or using OpenRLHF, visit the [GitHub reposi
     readTime: "12 min read",
     tags: ["PyTorch", "Deep Learning", "Machine Learning", "AI", "Framework"],
     category: "ML Engineering",
-    featured: false,
     content: `## Introduction
 
 In the world of deep learning, choosing the right framework can make the difference between a smooth development experience and endless frustration. PyTorch has emerged as one of the most popular choices among researchers and practitioners alike, known for its intuitive design, dynamic computation graphs, and Pythonic nature. Whether you're building your first neural network or developing state-of-the-art models, PyTorch provides the tools and flexibility you need.
@@ -1294,9 +1287,6 @@ export const getBlogCategories = () => {
   return ['All', ...categories];
 };
 
-export const getFeaturedPosts = () => {
-  return blogPosts.filter(post => post.featured);
-};
 
 export const getBlogPostById = (id) => {
   return blogPosts.find(post => post.id === id);
