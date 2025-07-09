@@ -39,7 +39,7 @@ export const myProjects = [{
         desc: 'A revolutionary multi-agent system that automates job applications using GPT-4 and Claude-3 APIs. AutoApply has generated $480K ARR with 10K+ monthly active users by intelligently applying to relevant positions.',
         subdesc: 'Built with fine-tuned YOLOv8 for form detection achieving 94.3% accuracy, processing 78K+ successful applications. Scaled infrastructure handles 2.8M+ monthly queries with 99.7% uptime using containerized microservices.',
         href: 'https://github.com/janMagnusHeimann/autoapply-turbo-charge-jobs',
-        texture: '/textures/project/project1.mp4',
+        texture: '/textures/project/autoapply.mp4',
         logo: '/assets/autoapply.png',
         logoStyle: {
             backgroundColor: '#2A1816',
