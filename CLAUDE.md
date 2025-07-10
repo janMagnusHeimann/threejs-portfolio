@@ -46,10 +46,15 @@ This is a React + Three.js portfolio website built with Vite. The site showcases
 
 ### Email Configuration
 
-The contact form uses EmailJS. Environment variables needed:
-- `REACT_APP_EMAILJS_USERID`
-- `REACT_APP_EMAILJS_TEMPLATEID`
-- `REACT_APP_EMAILJS_RECEIVERID`
+The contact form and newsletter subscription use EmailJS. Environment variables needed:
+- `VITE_EMAILJS_SERVICE_ID` - EmailJS service ID
+- `VITE_EMAILJS_TEMPLATE_ID` - Template ID for contact form
+- `VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID` - Template ID for newsletter subscriptions
+- `VITE_EMAILJS_PUBLIC_KEY` - EmailJS public key
+
+**Important**: Use `VITE_` prefix for environment variables in Vite (not `REACT_APP_`)
+
+For detailed setup instructions, see `EMAILJS_SETUP.md`
 
 ### 3D Model Loading
 
@@ -65,3 +70,19 @@ Models are loaded from `/public/models` using `useGLTF` hook. Key models:
 - Responsive sizing calculated once and passed to components
 - Suspense boundaries with custom loading components
 - Media queries determine render complexity based on device
+
+### Deployment
+
+#### Vercel Deployment
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables in Vercel project settings:
+   - `VITE_EMAILJS_SERVICE_ID`
+   - `VITE_EMAILJS_TEMPLATE_ID`
+   - `VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID`
+   - `VITE_EMAILJS_PUBLIC_KEY`
+3. Deploy using `npm run build`
+4. Test contact form and newsletter functionality after deployment
+
+#### Local Development with EmailJS
+Create `.env.local` file with EmailJS environment variables for local testing.
+Never commit this file to version control.
