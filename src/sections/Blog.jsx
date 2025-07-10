@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { blogPosts, getBlogCategories } from '../content/blogPosts.js';
 import BlogCard from '../components/BlogCard.jsx';
 import BlogPost from '../components/BlogPost.jsx';
+import useAlert from '../hooks/useAlert.js';
+import Alert from '../components/Alert.jsx';
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const { alert, showAlert, hideAlert } = useAlert();
 
   // Get unique categories
   const categories = getBlogCategories();
@@ -33,12 +39,58 @@ const Blog = () => {
     setSelectedPost(null);
   };
 
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    
+    setNewsletterLoading(true);
+    
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID,
+        {
+          subscriber_email: newsletterEmail,
+          to_name: 'Jan Magnus Heimann',
+          to_email: 'jan@heimann.ai',
+          message: `New newsletter subscription from: ${newsletterEmail}`,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      .then(
+        () => {
+          setNewsletterLoading(false);
+          showAlert({
+            show: true,
+            text: 'Successfully subscribed to newsletter! 🎉',
+            type: 'success',
+          });
+          
+          setTimeout(() => {
+            hideAlert();
+            setNewsletterEmail('');
+          }, 3000);
+        },
+        (error) => {
+          setNewsletterLoading(false);
+          console.error(error);
+          
+          showAlert({
+            show: true,
+            text: 'Failed to subscribe. Please try again 😢',
+            type: 'danger',
+          });
+        },
+      );
+  };
+
   if (selectedPost) {
     return <BlogPost post={selectedPost} onBack={handleBack} />;
   }
 
   return (
     <section className="c-space my-20" id="blog">
+      {alert.show && <Alert {...alert} />}
       <div className="w-full">
         {/* Header */}
         <div className="text-center mb-12">
@@ -125,16 +177,23 @@ const Blog = () => {
           <p className="text-gray-400 mb-6">
             Get notified when I publish new articles about machine learning, web development, and technology insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
               className="flex-1 bg-black-200 border border-black-100 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
             />
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-              Subscribe
+            <button 
+              type="submit"
+              disabled={newsletterLoading}
+              className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            >
+              {newsletterLoading ? 'Subscribing...' : 'Subscribe'}
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </section>
