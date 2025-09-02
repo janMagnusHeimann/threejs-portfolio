@@ -109,7 +109,7 @@ export const myProjects = [{
     },
     {
         title: 'ArchUnit TypeScript - Architecture Testing',
-        desc: 'Open source TypeScript architecture testing library with 400+ GitHub stars and widespread adoption in the JavaScript ecosystem. Enables developers to validate architectural rules and maintain code quality at scale.',
+        desc: 'Open source TypeScript architecture testing library with 200+ GitHub stars and widespread adoption in the JavaScript ecosystem. Enables developers to validate architectural rules and maintain code quality at scale.',
         subdesc: 'Implemented AST-based static analysis supporting circular dependency detection, layered architecture validation, and code metrics. Built pattern matching system with glob/regex support and universal testing framework integration.',
         href: 'https://github.com/LukasNiessen/ArchUnitTS',
         texture: '/textures/project/project3.mp4',
@@ -195,15 +195,24 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
 
 export const workExperiences = [{
         id: 1,
+        name: 'LEMONFLOW AI',
+        pos: 'Senior AI Architect',
+        duration: 'Aug 2025 - Present',
+        title: "Building AI-powered customer support solutions, reducing model latency by 30% and successfully onboarding 3 new enterprise customers. Leading architecture design for scalable AI infrastructure serving thousands of customer interactions.",
+        icon: '/assets/lemonflow.png',
+        animation: 'clapping',
+    },
+    {
+        id: 2,
         name: 'DRWN AI',
         pos: 'Machine Learning Engineer',
-        duration: 'Apr 2025 - Present',
-        title: "Developing Multi-Agent Reinforcement Learning systems using PPO to optimize advertising budget allocation, achieving 15-25% improvement in cost-per-acquisition across client campaigns. Built real-time inference pipeline serving RL policies with 95ms latency.",
+        duration: 'Apr 2025 - Aug 2025',
+        title: "Developed Multi-Agent Reinforcement Learning systems using PPO to optimize advertising budget allocation, achieving 15-25% improvement in cost-per-acquisition across client campaigns. Built real-time inference pipeline serving RL policies with 95ms latency.",
         icon: '/assets/framer.svg',
         animation: 'victory',
     },
     {
-        id: 2,
+        id: 3,
         name: 'Rocket Factory Augsburg',
         pos: 'Machine Learning Engineer',
         duration: 'Mar 2024 - Mar 2025',
@@ -212,7 +221,7 @@ export const workExperiences = [{
         animation: 'clapping',
     },
     {
-        id: 3,
+        id: 4,
         name: 'MIT',
         pos: 'Assistant ML Researcher',
         duration: 'May 2024 - Dec 2024',
@@ -221,7 +230,7 @@ export const workExperiences = [{
         animation: 'salute',
     },
     {
-        id: 4,
+        id: 5,
         name: 'Deepmask GmbH',
         pos: 'ML Engineer/Advisor',
         duration: 'Oct 2024 - Mar 2025',
@@ -230,7 +239,7 @@ export const workExperiences = [{
         animation: 'idle',
     },
     {
-        id: 5,
+        id: 6,
         name: 'OHB Systems AG',
         pos: 'Software Engineer',
         duration: 'Jan 2023 - Mar 2024',
@@ -239,7 +248,7 @@ export const workExperiences = [{
         animation: 'salute',
     },
     {
-        id: 6,
+        id: 7,
         name: 'GetMoBie GmbH',
         pos: 'Co-Founder/Software Lead',
         duration: 'Jan 2021 - Dec 2022',
